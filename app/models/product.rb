@@ -3,12 +3,14 @@ class Product < ApplicationRecord
     validates :image
     validates :name
     validates :description
-    validates :category_id,          numericality: { other_than: 0, message: "can't be blank" }
-    validates :product_condition_id, numericality: { other_than: 0, message: "can't be blank" }
-    validates :shopping_charge_id,   numericality: { other_than: 0, message: "can't be blank" }
-    validates :prefecture_id,        numericality: { other_than: 0, message: "can't be blank" }
-    validates :shopping_day_id,      numericality: { other_than: 0, message: "can't be blank" }
-    validates :price,                numericality: { only_integer: true, message: 'is invalid' }
+    with_options numericality: { other_than: 0 } do
+      validates :category_id
+      validates :product_condition_id
+      validates :shopping_charge_id
+      validates :prefecture_id
+      validates :shopping_day_id
+    end
+    validates :price,                numericality: { only_integer: true }
     validates :user
   end
 

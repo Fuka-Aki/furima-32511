@@ -31,25 +31,50 @@ RSpec.describe Product, type: :model do
       it 'categoryを選択していないと保存できない' do
         @product.category_id = 0
         @product.valid?
-        expect(@product.errors.full_messages).to include("Category can't be blank")
+        expect(@product.errors.full_messages).to include("Category must be other than 0")
       end
       it 'product_conditionを選択していないと保存できない' do
         @product.product_condition_id = 0
         @product.valid?
-        expect(@product.errors.full_messages).to include("Product condition can't be blank")
+        expect(@product.errors.full_messages).to include("Product condition must be other than 0")
       end
       it 'shopping_chargeを選択していないと保存できない' do
         @product.shopping_charge_id = 0
         @product.valid?
-        expect(@product.errors.full_messages).to include("Shopping charge can't be blank")
+        expect(@product.errors.full_messages).to include("Shopping charge must be other than 0")
       end
       it 'prefectureを選択していないと保存できない' do
         @product.prefecture_id = 0
         @product.valid?
-        expect(@product.errors.full_messages).to include("Prefecture can't be blank")
+        expect(@product.errors.full_messages).to include("Prefecture must be other than 0")
       end
       it 'shopping_dayを選択していないと保存できない' do
         @product.shopping_day_id = 0
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Shopping day must be other than 0")
+      end
+      it 'categoryが空だと保存できない' do
+        @product.category_id = nil
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Category can't be blank")
+      end
+      it 'product_conditionが空だと保存できない' do
+        @product.product_condition_id = nil
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Product condition can't be blank")
+      end
+      it 'shopping_chargeが空だと保存できない' do
+        @product.shopping_charge_id = nil
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Shopping charge can't be blank")
+      end
+      it 'prefectureが空だと保存できない' do
+        @product.prefecture_id = nil
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Prefecture can't be blank")
+      end
+      it 'shopping_dayが空だと保存できない' do
+        @product.shopping_day_id = nil
         @product.valid?
         expect(@product.errors.full_messages).to include("Shopping day can't be blank")
       end
@@ -68,8 +93,13 @@ RSpec.describe Product, type: :model do
         @product.valid?
         expect(@product.errors.full_messages).to include('Price must be less than or equal to 9999999')
       end
-      it 'priceが半角数字でないと保存できない' do
-        @product.price = '５００'
+      it 'priceが半角英語のみでは保存できない' do
+        @product.price = 'aaa'
+        @product.valid?
+        expect(@product.errors.full_messages).to include('Price is not a number')
+      end
+      it 'priceが半角英数混合では保存できない' do
+        @product.price = 'aa11'
         @product.valid?
         expect(@product.errors.full_messages).to include('Price is not a number')
       end
