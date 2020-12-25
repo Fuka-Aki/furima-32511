@@ -11,7 +11,6 @@ class Product < ApplicationRecord
       validates :shopping_day_id
     end
     validates :price,                numericality: { only_integer: true }
-    validates :user
   end
 
   belongs_to :user, foreign_key: 'user_id'

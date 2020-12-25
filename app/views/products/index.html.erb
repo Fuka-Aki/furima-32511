@@ -126,11 +126,11 @@
     <%= link_to '新規投稿商品', "#", class: "subtitle" %>
     <ul class='item-lists'>
       <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
-      <% @products.each do |product| %>
+      <%# <% @products.each do |product| %> %>
       <li class='list'>
         <%= link_to "#" do %>
         <div class='item-img-content'>
-          <%= image_tag product.image,  class: "item-img" %>
+          <%# <%= image_tag product.image,  class: "item-img" %> %>
 
           <%# 商品が売れていればsold outを表示しましょう %>
           <div class='sold-out'>
@@ -141,10 +141,10 @@
         </div>
         <div class='item-info'>
           <h3 class='item-name'>
-            <%= product.name %>
+            <%# <%= product.name %>
           </h3>
           <div class='item-price'>
-            <span><%= product.price %>円<br><%= product.shopping_charge_id %></span>
+            <%# <span><%= product.price %>円<br><%#= product.shopping_charge_id</span> %>
             <div class='star-btn'>
               <%= image_tag "star.png", class:"star-icon" %>
               <span class='star-count'>0</span>
