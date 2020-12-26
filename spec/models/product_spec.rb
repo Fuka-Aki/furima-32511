@@ -31,27 +31,27 @@ RSpec.describe Product, type: :model do
       it 'categoryを選択していないと保存できない' do
         @product.category_id = 0
         @product.valid?
-        expect(@product.errors.full_messages).to include("Category must be other than 0")
+        expect(@product.errors.full_messages).to include('Category must be other than 0')
       end
       it 'product_conditionを選択していないと保存できない' do
         @product.product_condition_id = 0
         @product.valid?
-        expect(@product.errors.full_messages).to include("Product condition must be other than 0")
+        expect(@product.errors.full_messages).to include('Product condition must be other than 0')
       end
       it 'shopping_chargeを選択していないと保存できない' do
         @product.shopping_charge_id = 0
         @product.valid?
-        expect(@product.errors.full_messages).to include("Shopping charge must be other than 0")
+        expect(@product.errors.full_messages).to include('Shopping charge must be other than 0')
       end
       it 'prefectureを選択していないと保存できない' do
         @product.prefecture_id = 0
         @product.valid?
-        expect(@product.errors.full_messages).to include("Prefecture must be other than 0")
+        expect(@product.errors.full_messages).to include('Prefecture must be other than 0')
       end
       it 'shopping_dayを選択していないと保存できない' do
         @product.shopping_day_id = 0
         @product.valid?
-        expect(@product.errors.full_messages).to include("Shopping day must be other than 0")
+        expect(@product.errors.full_messages).to include('Shopping day must be other than 0')
       end
       it 'categoryが空だと保存できない' do
         @product.category_id = nil

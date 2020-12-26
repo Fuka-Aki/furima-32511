@@ -10,7 +10,7 @@ class Product < ApplicationRecord
       validates :prefecture_id
       validates :shopping_day_id
     end
-    validates :price,                numericality: { only_integer: true }
+    validates :price, numericality: { only_integer: true }
   end
 
   belongs_to :user, foreign_key: 'user_id'
