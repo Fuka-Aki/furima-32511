@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :new, :edit]
+  before_action :authenticate_user!, only: [:new, :edit]
 
   def index
     @products = Product.all.order(created_at: :DESC)
