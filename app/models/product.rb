@@ -12,10 +12,11 @@ class Product < ApplicationRecord
     end
     validates :price, numericality: { only_integer: true }
   end
+  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
 
   belongs_to :user, foreign_key: 'user_id'
+  has_one :order
   has_one_attached :image
-  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
