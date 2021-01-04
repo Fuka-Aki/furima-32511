@@ -46,7 +46,9 @@ class ProductsController < ApplicationController
   end
 
   def move_to_index
-    redirect_to action: :index unless current_user.id == @product.user_id
+    if current_user.id == !@product.user_id || @product.order.present?
+      redirect_to action: :index
+    end
   end
 
   def set_product
